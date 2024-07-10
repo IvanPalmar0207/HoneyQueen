@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.containerSubBar{
+    display: flex;
+    margin: 50px;
+    justify-content: space-around;
+}
+
+.subMenuInfo{
+    display: flex;
+    align-items: center;
+}
+
+.subMenuInfo ul{
+    margin-left: 20px;
+    margin-right: 20px
+}
+
+.subMenuInfo ul li{
+    display: inline-block;
+    padding: 8px;
+    font-size: 15px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    border-left: 1px solid rgb(35, 182, 234);
+}
+
+li a{
+    color: rgb(35,182, 234);
+}
+
+.subMenuInfo .bi{
+    font-size: 25px;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 100%;
+    color: white;
+    background-image: url('../img/buttonIcon/iconBack.png');
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.subMenuInfo .bi:hover{
+    background-image: none;
+    background-color: black;
+    cursor: pointer;
+    transition: all ease-in-out 0.3s;
+}
+
+.containerButtonMain{
+    width: 100%;
+}
+
+.containerButtonMain button{
+    padding: 15px;
+    margin-left: 10px;
+    border-radius: 15px;
+    background-image: url('../img/buttonIcon/buttonBack.png');
+    background-position: center;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+}
+
+.containerButtonMain button:hover{
+    background-image: none;
+    background-color: black;
+    cursor: pointer;
+    transition: all ease-in-out 0.3s;
+}
+
+
+.containerButtonMain button a{
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.containerAccountAll{
+    padding-top: 40px;
+    padding-bottom: 60px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.containerAccount{
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}
+
+.containerCardAccount{
+    width: 30%;
+    text-align: center;
+    padding-top: 30px;
+    border-radius: 60px;
+}
+
+.back1{
+    background-image: url('../img/cardsImg/cardBackground.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.back2{
+    background-image: url('../img/cardsImg/cardBackground2.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.containerCardAccount img{
+    width: 80%;
+    height: 100%;
+}
+
+.containerFormRegister{
+    width: 22%;
+    border: 2px solid rgb(112, 179, 227);
+    text-align: center;
+    padding: 20px;
+    padding-bottom: 40px;
+    border-radius: 30px;
+    box-shadow: 9px 9px 9px 1px gray;
+}
+
+.containerFormRegister h4{
+    color:rgb(37, 181, 234);
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    text-decoration: underline;
+}
+
+.containerFormRegister input{
+    width: 100%;
+    height: 40px;
+    margin-top: 15px;
+    border: 2px solid rgb(112, 179, 227);
+    color: rgb(31, 128, 163);
+    padding-left: 10px;
+}
+
+.containerTextAccount{
+    text-align: justify;
+    color: rgb(112, 179, 227);
+    margin-top: 10px;
+}
+
+.buttonRegister{
+    margin-top: 10px;
+    width: 100%;
+    height: 40px;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-size: medium;
+    color: white;
+    text-decoration: none;
+    border: none;
+}
+
+.buttonColor1{
+    background-color: rgb(31, 128, 163);
+}
+
+.buttonRegister a{
+    color: white;
+    text-decoration: none;
+}
+
+.buttonColor2{
+    background-color: rgb(27, 157, 217);
+}
+
+@media (max-width: 1200px) {
+    .subMenuInfo ul li{
+        padding: 5px;
+        font-size: 12px;
+    }
+
+    .subMenuInfo .bi{
+        font-size: 15px;
+    }
+
+    .containerButtonMain button{
+        padding: 13px;
+    }
+
+    .containerButtonMain button a{
+        font-size: 13px;
+    }
+
+    .containerAccountAll{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .containerFormRegister{
+        margin-top: 70px;
+        width: 80%;
+    }
+
+    .containerCardAccount{
+        width: 100%;
+        height: 400px;
+        margin-top: 80px;
+    }
+
+    .containerAccount{
+        flex-direction: column;
+    }
+
+}
+
+@media (max-width: 900px) {
+    .containerSubBar{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .subMenuInfo{
+        justify-content: space-around;
+    }
+
+    .subMenuInfo ul li{
+        display: block;
+    }
+
+    .containerButtonMain{
+        text-align: center;
+    }
+
+    .containerButtonMain button{
+        margin-top: 20px;
+    }
+
+    .containerIconsMain{
+        display: grid;
+    }
+
+    .containerIconsMain i{
+        margin: 2px;
+    }
+
+}

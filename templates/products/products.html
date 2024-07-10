@@ -1,0 +1,64 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/products.css' %}">
+    <link rel="shortcut icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Productos</title>
+</head>
+<body>
+    {% include 'components/navBarProducts.html' %}
+
+    <section class="containerAllProducts">
+        <div class="goBackProducts">
+            <a href="{% url 'home' %}">
+                <i class="bi bi-house-fill"></i>
+            </a>
+        </div>
+        <div class="titleCategorie">
+            <h2>{{category.categorieName}}</h2>
+        </div>
+
+        <div class="containerProducts">
+            {% for i in products %}
+            <div class="cardContainer">
+                <div class="productsImage">
+                    <img src="{{i.productImage.url}}" alt="imageProducts">
+                </div>
+                <div class="cardProductsInfo">
+                    <h2>{{i.productName}}</h2>
+
+                    <p>
+                        {{i.productDescription}}
+                    </p>                    
+                    {% if i.referenceId == NULL %}
+                        <h4></h4>
+                    {% else %}
+                        <h4>Ref: {{i.referenceId.referenceDescription}}</h4>
+                    {% endif %}
+                    <div class="containerSizes">
+                        <h3>Tallas: <span>.</span></h3>
+                        <br>
+                        {% for j in i.sizeId.all %} 
+                            <h3>{{j.sizeName}} <span>-</span></h3>
+                        {% endfor %}
+                    </div>          
+                    <h3>Precio: {{i.productPrice}} COP</h3>      
+                </div>
+                <button class="buttonBuyProduct">
+                    <a href="">Comprar</a>
+                </button>
+            </div>
+            {% endfor %}
+        </div>                                                                                          
+    </section>
+
+    <footer>
+    </footer>
+
+</body>
+</html>

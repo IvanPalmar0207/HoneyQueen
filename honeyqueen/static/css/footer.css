@@ -1,0 +1,10 @@
+footer{
+    background-image: url('../img/Background.jpg');
+    height: 50px;
+}
+
+@media (max-width:900px) {
+    footer{
+        display: none;
+    }
+}

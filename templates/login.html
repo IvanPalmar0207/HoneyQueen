@@ -1,0 +1,97 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="shortcut icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
+    <title>Iniciar Sesión</title>
+</head>
+<body>
+    {% include 'components/navbarMain.html' %}
+
+    <div>
+        
+        <div class="containerSubBar">
+            <div class="subMenuInfo">
+                <div class="containerIconsMain">
+                    <i class="bi bi-facebook"></i>
+                    <i class="bi bi-instagram"></i>
+                    <i class="bi bi-tiktok"></i>
+                </div>
+                <ul>
+                    {% for i in categories %}
+                        <li>
+                            <a href="products/seeProducts/{{i.categoryId}}">{{i.categorieName}}</a>
+                        </li>                 
+                    {% endfor %}
+                        <li>
+                            <a href="">NOTICIAS</a>
+                        </li>
+                        <li>
+                            <a href="">BLOG</a>
+                        </li>
+                </ul>
+                <i class="bi bi-cart-fill"></i>
+            </div>
+
+            <div class="buttonsInfo">
+                <div class="containerButtonMain">
+                    <button>
+                        <a href="{% url 'login' %}">INICIAR SESIÓN</a>
+                    </button>
+                    <button>
+                        <a href="{% url 'home' %}">REGISTRARSE</a>
+                    </button>                                        
+                </div>
+            </div>
+
+        </div>
+
+        <div class="containerAccountAll">
+            <div class="containerAccount">
+                <div class="containerCardAccount back1">
+                    <img src="{% static 'img/cardsImg/firstPicture.png'%}" alt="accountImage">
+                </div>
+                
+                <div class="containerCardAccount back2">
+                    <img src="{% static 'img/cardsImg/secondPicture.png'%}" alt="accountImage">
+                </div>
+                
+                <div class="containerCardAccount back1">
+                    <img src="{% static 'img/cardsImg/thirdPicture.png'%}" alt="accountImage">
+                </div>         
+            </div>       
+
+            <div class="containerFormRegister">
+                <h4>INICIAR SESIÓN</h4>
+                <form action="">
+                    <input type="text" name="names" id="names" placeholder="Nombres*">
+                    <br>
+                    
+                    <input type="email" name="email" id="email" placeholder="Correo Electronico*">                
+                    <br>
+
+                    <input type="password" name="password" id="password" placeholder="Contraseña*">                
+                    <br>                
+
+                    <button class="buttonRegister buttonColor1" type="submit">Crear Cuenta</button>
+                    <br>
+                    <button class="buttonRegister buttonColor2">
+                        <a href="{% url 'home' %}">¿No tienes cuenta?</a>
+                    </button>
+                    <div class="forgotPassword">
+                        <a href="">¿Olvidaste tu contraseña?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% include 'components/footer.html' %}
+
+</body>
+</html>

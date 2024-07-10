@@ -1,0 +1,162 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.containerAllProducts{
+    text-align: center;
+    padding: 40px;
+    padding-bottom: 220px;
+}
+
+.goBackProducts{
+    text-align: start;
+}
+
+.goBackProducts a{
+    font-size: 35px;
+    color: rgb(35, 182, 234);
+}
+
+.titleCategorie{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 1.3em;
+}
+
+.titleCategorie h2{
+    color: rgb(41, 182, 234);
+    text-decoration: underline;
+    text-decoration-thickness: 5px;  
+}
+
+.containerProducts{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+    grid-auto-columns: minmax(100px, aut);
+}
+
+.cardContainer{
+    width: 100%;
+    margin-top: 50px;
+    color: rgb(0, 159, 227);
+}
+
+.productsImage img{
+    width: 200px;
+    height: 350px;
+}
+
+.containerProducts .cardContainer:nth-child(2n) .productsImage{
+    background-image: url('../img/cardsImg/cardBackground3.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    padding: 30px;
+    padding-bottom: 0px;
+}
+
+.containerProducts .cardContainer:nth-child(2n+1) .productsImage{
+    background-image: url('../img/cardsImg/cardBackground.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    padding: 30px;
+    padding-bottom: 0px;
+}
+
+
+.containerProducts .cardContainer:nth-child(4n) .productsImage{
+    background-image: url('../img/cardsImg/cardBackground4.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    padding: 30px;
+    padding-bottom: 0px;
+}
+
+.cardProductsInfo{
+    padding-top: 10px;
+    padding-left: 60px;
+    height: 50%;
+    padding-right: 60px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.cardProductsInfo h2{
+    text-align: center;
+    height: 5%;
+}
+
+.cardProductsInfo p{
+    height: 15%;
+}
+
+.cardProductsInfo h4{
+    height: 10%;
+}
+
+.containerSizes{
+    display: flex;
+    justify-content: center;
+}
+
+.buttonBuyProduct{
+    width: 40%;
+    margin-top: 10px;
+    padding: 15px;
+    font-size: 1.1em;
+    font-weight: bold;
+    background-color: rgb(41, 182, 234);
+    border-radius: 10px;
+    border: none;
+    opacity: 0.8;
+}
+
+.buttonBuyProduct:hover{
+    background-color: black;
+    cursor: pointer;
+    opacity: 1;
+    transition: all ease-in 0.3s;
+}
+
+.buttonBuyProduct a{
+    text-decoration: none;
+    color: white;
+}
+
+.containerSizes span{
+    color: transparent;
+}
+
+footer{
+    background-image: url('../img/Background.jpg');
+    height: 50px;
+}
+
+@media (max-width:1200px) {
+    .containerProducts{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 6%;
+    }
+
+    .cardProductsInfo{
+        padding: 25px;
+    }
+
+    .containerAllProducts{
+        margin-bottom: 500px;
+    }
+
+    footer{
+        display: none;
+    }
+}
