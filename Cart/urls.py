@@ -1,6 +1,10 @@
+#Url Imports
 from django.urls import path
 #Views
+from Cart.views import chooseProduct, allProducts
 
+#Urls
 urlpatterns = [
-    path()
+    path('chooseProduct/<id>', chooseProduct, name = 'chooseProduct'),
+    path('allProducts/', allProducts, name = 'allProducts')
 ]

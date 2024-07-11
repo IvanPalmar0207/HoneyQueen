@@ -11,4 +11,8 @@ def chooseProduct(request, id):
         'product' : product
     }
 
-    return render(request,'chooseProduct.html', context)
+    return render(request,'cart/chooseProduct.html', context)
+
+#See all products
+def allProducts(request):
+    return render(request, 'cart/allProducts.html')

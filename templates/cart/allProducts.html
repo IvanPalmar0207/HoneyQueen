@@ -1,0 +1,105 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/allProducts.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Carrito de Compras</title>
+</head>
+<body>
+    {% include 'components/navbarMain.html' %}
+
+    <section class="containerAllProducts">
+        
+        <div class="containerGoBack">
+            <a href="{% url 'home' %}">
+                <i class="bi bi-arrow-left-circle"></i>
+                Volver
+            </a>
+        </div>
+
+        <div class="containerCartProducts">
+            <div>
+                <div class="titleCart">
+                    <h2>Resumen de tu Compra</h2>
+                </div>
+
+                <div>
+                    <div class='containerTable'>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nombre del Producto</th>
+                                    <th>Descripción del Producto</th>
+                                    <th>Talla</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio Unitario</th>
+                                    <th>Valor Total</th>
+                                    <th class="optionsFile">Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td data-label='Nombre del Producto'>1030533045</td>
+                                    <td data-label='Descripción'>Ivan David Palmar Martinez</td>                        
+                                    <td data-label='Talla del producto'>3157201170</td>                        
+                                    <td data-label='Unidades'>palmar.ivan0205@gmail.com</td>      
+                                    <td data-label='Precio Unitario'>palmar.ivan0205@gmail.com</td>      
+                                    <td data-label='Valor Total'>1</td>      
+                                    <td data-label="Opciones">
+                                        <a href="">
+                                            <i class="bi bi-trash3-fill options clientDelete"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="containerSendProduct">
+                <h2>Entrega - Productos</h2>
+
+                <p>
+                    Mira todas las opciones de envio para tus productos, 
+                    incluyendo los plazos del envio y los precios del envio.
+                </p>
+
+                <div class="productTotal">
+                    <h3><span>Subtotal:</span></h3>                    
+                    <h3>$ XXXXXX COP</h3>
+                </div>
+
+                <div class="productTotal">            
+                    <h3><span>Total:</span></h3>
+                    <h3>$ XXXXXX COP</h3>
+                </div>
+
+                <div class="containerFormCart">
+                    <form action="" method="post">{% csrf_token %}
+                        <button type="submit">Finalizar la Compra</button>
+                    </form>
+                </div>
+
+                <div class="continueBuying">
+                    <i class="bi bi-arrow-left-circle"></i>
+                    <a href="{% url 'home' %}">
+                        Seguir comprando
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    {% include 'components/footer.html' %}
+
+</body>
+</html>

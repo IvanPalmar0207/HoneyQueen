@@ -19,12 +19,14 @@ from django.urls import include, path
 from django.conf.urls.static import static
 from django.conf import settings
 #ProjectViews
-from honeyqueen.views import home, login
+from honeyqueen.views import home, login, allProducts
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name = 'home'),
     path('login', login, name = 'login'),
+    path('allProducts', allProducts, name = 'allProducts'),
     path('users/', include('Users.urls')),
-    path('products/', include('Products.urls'))
+    path('products/', include('Products.urls')),
+    path('cart/', include('Cart.urls'))
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

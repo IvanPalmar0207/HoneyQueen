@@ -7,9 +7,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="shortcut icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/chooseProduct.css' %}">
     <title>Products</title>
 </head>
 <body>
-    
+    {% include 'components/navBarProducts.html' %}
+
+    <section class="containerAllChoose">
+        
+        <div class="containerGoBack">
+            <a href="/products/seeProducts/{{product.categoryId.categoryId}}">
+                <i class="bi bi-arrow-left-circle"></i>
+                Volver
+            </a>
+        </div>
+
+        <div class="containerProductInfo">
+
+            <div class="containerProductImg">
+                <img src="{{product.productImage.url}}" alt="">
+            </div>
+
+            <div class="containerAllInfoProduct">                
+                <div class="containerProduct title">
+                    <h2>{{product.productName}}</h2>
+                </div>
+                
+                <div class="containerProduct category">
+                    <h4><span>PIJAMAS DE {{product.categoryId.categorieName}}</span></h4>                
+                </div>
+
+                <div class="containerProduct">
+                    <h4>Descripción</h4>
+                    <p>
+                        {{product.productDescription}}
+                    </p>
+                </div>
+
+                <div class="containerProduct price">
+                    <h4>Precio: <span>{{product.productPrice}} COP</span></h4>
+                </div>
+
+                <div class="containerProduct stock">
+                    <h4>Las unidades disponibles son: <span>{{product.productStock}}</span></h4>
+                </div>
+
+                <div class="containerProduct">
+                    
+                    <form action = "/cart/allProducts/" method="post">{% csrf_token %}
+
+                        <label for="sizedList">Elige una talla:</label>
+                        <br>
+                        <br>
+                        <div class="containerSelectSize">
+                            <select name="sizedList" id="sizesList">
+                            <option value=""></option>
+                            {% for i in product.sizeId.all %}
+                                <option value="{{i.sizeId}}">{{i.sizeName}}</option>
+                            {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <br>
+                        <br>
+
+                        <label for = "buttonLess">Cantidad:</label>
+                        <br>
+                        <br>
+                        <div class="containerQuantity">
+                            <div class="buttonQuantity" id = "decrementBtn">-</div>
+                            <div class="numberQuantity" name = "counterValue" id = "counterValue">0</div>
+                            <div class="buttonQuantity" id = "incrementBtn">+</div>
+                        </div>
+
+                        <br>
+                        <br>
+
+                        <div class="containerButtonCart">
+                            <input type="submit" value="Agregar a la Bolsa de Compras">
+                        </div>
+                    </form>
+
+                </div>            
+
+            </div>
+        </div>
+
+    </section>
+
+    {% include 'components/footer.html' %}
+
 </body>
+
+<script src="{% static 'js/counter.js' %}"></script>
+
 </html>

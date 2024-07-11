@@ -170,6 +170,12 @@ li a{
     border: none;
 }
 
+.buttonRegister:hover{
+    cursor: pointer;
+    background-color: black;
+    transition: all ease-in-out 0.3s;
+}
+
 .buttonColor1{
     background-color: rgb(31, 128, 163);
 }

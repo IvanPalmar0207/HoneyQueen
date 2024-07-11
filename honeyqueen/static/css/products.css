@@ -6,8 +6,7 @@
 
 .containerAllProducts{
     text-align: center;
-    padding: 40px;
-    padding-bottom: 220px;
+    padding: 60px;
 }
 
 .goBackProducts{
@@ -34,19 +33,27 @@
 .containerProducts{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 30px;
-    grid-auto-columns: minmax(100px, aut);
+    grid-gap: 60px;
+    height: auto;
+    padding-top: 50px;
 }
 
 .cardContainer{
     width: 100%;
-    margin-top: 50px;
+    height: auto;
     color: rgb(0, 159, 227);
+    padding: 30px;
+    padding-top: 0px;
+}
+
+.productsImage{
+    width: 100%;
+    height: 55%;
 }
 
 .productsImage img{
-    width: 200px;
-    height: 350px;
+    width: 80%;
+    height: 100%;
 }
 
 .containerProducts .cardContainer:nth-child(2n) .productsImage{
@@ -78,10 +85,7 @@
 }
 
 .cardProductsInfo{
-    padding-top: 10px;
-    padding-left: 60px;
-    height: 50%;
-    padding-right: 60px;
+    height: 40%;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     display: flex;
@@ -92,15 +96,19 @@
 
 .cardProductsInfo h2{
     text-align: center;
-    height: 5%;
+    height: auto;
 }
 
 .cardProductsInfo p{
-    height: 15%;
+    height: auto;
 }
 
 .cardProductsInfo h4{
-    height: 10%;
+    height: auto;
+}
+
+.cardProductsInfo h3{
+    height: auto;
 }
 
 .containerSizes{
@@ -142,18 +150,14 @@ footer{
 }
 
 @media (max-width:1200px) {
+    .containerAllProducts{
+        padding: 0px;
+    }
+
     .containerProducts{
         display: grid;
         grid-template-columns: repeat(1, 1fr);
-        grid-gap: 6%;
-    }
-
-    .cardProductsInfo{
-        padding: 25px;
-    }
-
-    .containerAllProducts{
-        margin-bottom: 500px;
+        grid-gap: 5%;
     }
 
     footer{

@@ -1,0 +1,224 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.containerAllChoose{
+    padding: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerGoBack{
+    width: 100%;
+    font-size: 25px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    text-decoration: underline;
+    font-weight: bold;
+    color:rgb(37, 181, 234);
+    text-decoration: none;
+}
+
+.containerGoBack:hover{
+    text-decoration: underline;
+    transition: all ease-in 0.3s;
+}
+
+.containerGoBack a{
+    text-decoration: none;
+    color:rgb(37, 181, 234);
+}
+
+.containerProductInfo{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    align-self: center;
+    width: 80%;
+    height: 100%;
+    margin-top: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-radius: 50px;
+    box-shadow: 0px 0px 5px 5px rgb(202, 202, 202);
+}
+
+.containerProductImg{
+    background-image: url('../img/cardsImg/cardBackground.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 30%;
+    height: auto;
+    text-align: center;
+}
+
+.containerProductImg img{
+    width: auto;
+    height: 560px;
+}
+
+.containerAllInfoProduct{
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+}
+
+.containerAllInfoProduct .containerProduct{
+    margin-top: 7%;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.containerAllInfoProduct .title{
+    margin-top: 0%;
+    text-align: center;
+    color: rgb(41, 182, 234);
+    text-decoration: underline;
+    text-decoration-thickness: 3px;  
+}
+
+.category span{
+    color: rgb(41, 182, 234);
+}
+
+.price span{
+    color: rgb(41, 182, 234);
+}
+
+.stock span{
+    color: rgb(41, 182, 234);
+}
+
+form{
+    margin-top: 15px;
+}
+
+form label,input{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.containerQuantity{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: -10px;
+    height: 5%;
+}
+
+.buttonQuantity{
+    width: 13%;
+    height: 50px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bolder;
+    color: white;
+    margin: 12px;
+    background-color: rgb(41, 182, 234);
+    padding: 10px;
+    border-radius: 100%;
+}
+
+.buttonQuantity:hover{
+    cursor: pointer;
+    background-color: black;
+    transition: all ease-in-out 0.3s;
+}
+
+.numberQuantity{
+    font-size: 20px;
+}
+
+.containerSelectSize{
+    text-align: center;
+}
+
+.containerSelectSize select{
+    width: 75%;
+    text-align: center;
+    border-radius: 15px;
+    height: 35px;
+    color: black;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.containerButtonCart{
+    text-align: center;
+    width: 100%;
+}
+
+.containerButtonCart input{
+    border-radius: 20px;
+    border: none;
+    background-color: rgb(41, 182, 234);
+    color: white;
+    font-weight: 600;
+    padding: 18px;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+.containerButtonCart input:hover{
+    background-color: black;
+    transition: all ease-in-out 0.3s;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.containerProduct p{
+    margin-top: 15px;
+}
+
+@media (max-width:1300px) {
+    
+    .containerButtonCart{
+        width: 80%;
+    }
+
+    .containerAllChoose{
+        padding: 10px;
+    }
+
+    .containerProductInfo{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .containerProductImg{
+        width: 100%;
+    }
+
+    .containerProductImg img{
+        width: 50%;
+        height: 100%;
+    }
+
+    .containerAllInfoProduct{
+        width: 100%;
+        padding: 20px;
+    }
+
+    .containerButtonCart{
+        width: 100%;
+    }
+
+    .containerButtonCart input{
+        width: 100%;
+        padding: 10px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+}

@@ -41,7 +41,7 @@
                         <h4>Ref: {{i.referenceId.referenceDescription}}</h4>
                     {% endif %}
                     <div class="containerSizes">
-                        <h3>Tallas: <span>.</span></h3>
+                        <h3>Tallas: <span>-</span></h3>
                         <br>
                         {% for j in i.sizeId.all %} 
                             <h3>{{j.sizeName}} <span>-</span></h3>
@@ -50,7 +50,7 @@
                     <h3>Precio: {{i.productPrice}} COP</h3>      
                 </div>
                 <button class="buttonBuyProduct">
-                    <a href="">Comprar</a>
+                    <a href="/cart/chooseProduct/{{i.productId}}">Comprar</a>
                 </button>
             </div>
             {% endfor %}

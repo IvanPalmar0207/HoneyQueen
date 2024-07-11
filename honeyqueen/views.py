@@ -14,6 +14,7 @@ def home(request):
 
     return render(request, 'home.html', context)
 
+#Users Login
 def login(request):
     categories = tb_categories.objects.all()
 
@@ -22,3 +23,7 @@ def login(request):
     }
 
     return render(request, 'login.html', context)
+
+#See all products
+def allProducts(request):
+    return render(request,'cart/allProducts.html')
