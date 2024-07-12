@@ -55,6 +55,8 @@
     width: 30%;
     height: auto;
     text-align: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
 }
 
 .containerProductImg img{

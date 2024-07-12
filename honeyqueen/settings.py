@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Users.apps.UsersConfig',
     'Products.apps.ProductsConfig',
-    'Cart.apps.CartConfig'
+    'Cart.apps.CartConfig',
+    'sweetify'
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,5 @@ MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL= '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'Users.User'

@@ -70,17 +70,18 @@
 
             <div class="containerFormRegister">
                 <h4>REGISTRO</h4>
-                <form action="">
-                    <input type="text" name="names" id="names" placeholder="Nombres*">
+                <form action="/users/registerUser/" method = "POST" name="form">
+                    {% csrf_token %}      
+                    <input type="text" name="documentNumber" id="documentNumber" placeholder="Numero de Documento*" required>
                     <br>
                     
-                    <input type="text" name="lastName" id="lastName" placeholder="Apellidos*">                
+                    <input type="text" name="namesUser" id="namesUser" placeholder="Nombre Completo*" required>                
                     <br>
                     
-                    <input type="email" name="email" id="email" placeholder="Correo Electronico*">                
+                    <input type="email" name="emailUser" id="emailUser" placeholder="Correo Electronico*" required>                
                     <br>
 
-                    <input type="password" name="password" id="password" placeholder="Contraseña*">                
+                    <input type="password" name="passwordUser" id="passwordUser" placeholder="Contraseña*" required>                
                     <br>
 
                     <div class="containerTextAccount">
@@ -102,5 +103,10 @@
 
     {% include 'components/footer.html' %}
 
-</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.5/sweetalert2.all.min.js"></script>
+    <script src="{% static 'js/validateRegister.js' %}"></script>
+</body> 
 </html>
+
+{% load sweetify %} 
+{% sweetify %}
