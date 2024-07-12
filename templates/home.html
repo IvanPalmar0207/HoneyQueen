@@ -13,8 +13,11 @@
 <body>
     {% include 'components/navbarMain.html' %}
 
+    {% if request.user.is_authenticated %}
+        <h1>{{user.documentNumber}}</h1>
+    {% endif %}
+
     <div>
-        
         <div class="containerSubBar">
             <div class="subMenuInfo">
                 <div class="containerIconsMain">
@@ -70,7 +73,7 @@
 
             <div class="containerFormRegister">
                 <h4>REGISTRO</h4>
-                <form action="/users/registerUser/" method = "POST" name="form">
+                <form action="/users/registerUser/" method = "POST" name="form" onsubmit="return validateRegister()">
                     {% csrf_token %}      
                     <input type="text" name="documentNumber" id="documentNumber" placeholder="Numero de Documento*" required>
                     <br>
@@ -104,6 +107,7 @@
     {% include 'components/footer.html' %}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.5/sweetalert2.all.min.js"></script>
+
     <script src="{% static 'js/validateRegister.js' %}"></script>
 </body> 
 </html>

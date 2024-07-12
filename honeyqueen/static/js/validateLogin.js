@@ -1,17 +1,14 @@
-function validateRegister(){
+function validateLogin(){
     var documentNumber = document.form.documentNumber.value
-    var namesUser = document.form.namesUser.value
-    var emailUser = document.form.emailUser.value
-    var passwordUser = document.form.passwordUser.value
+    var email = document.form.email.value
+    var password = document.form.password.value
 
     //Validations
 
     let lowerCase = /[a-z]/g
     let upperCase = /[A-Z]/g
-    let numbers = /[1-9999999999999]/g
     let patternEmail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
     let patternPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/
-
 
     if(documentNumber.length > 10 || documentNumber.length < 10){
         Swal.fire({
@@ -41,21 +38,7 @@ function validateRegister(){
         return false
     }
 
-    else if(namesUser.match(numbers)){
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'El nombre completo no puede tener numeros, intenta nuevamente.',
-            confirmButtonText: "Atras",
-            allowEnterKey:true,
-            allowOutsideClick:false,
-            confirmButtonColor:"red"
-            }
-        )
-        return false
-    }
-
-    else if(emailUser.length < 20 || emailUser > 100){
+    else if(email.length < 20 || email > 100){
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
@@ -69,7 +52,7 @@ function validateRegister(){
         return false
     }
 
-    else if(!patternEmail.test(emailUser)){
+    else if(!patternEmail.test(email)){
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
@@ -83,7 +66,7 @@ function validateRegister(){
         return false
     }
 
-    else if(passwordUser.length < 8 || passwordUser.length > 20){
+    else if(password.length < 8 || password.length > 20){
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
@@ -97,7 +80,7 @@ function validateRegister(){
         return false
     }
 
-    else if(!patternPassword.test(passwordUser)){
+    else if(!patternPassword.test(password)){
         Swal.fire({
             icon: 'error',
             title: 'Oops...',

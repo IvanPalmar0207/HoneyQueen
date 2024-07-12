@@ -44,6 +44,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = 'documentNumber'
     EMAIL_FIELD = 'email'
+    PASSWORD_FIELD = 'password'
     REQUIRED_FIELDS = ['fullName', 'email', 'password']
 
     class Meta:

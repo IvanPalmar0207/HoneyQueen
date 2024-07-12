@@ -70,7 +70,8 @@
 
             <div class="containerFormRegister">
                 <h4>INICIAR SESIÓN</h4>
-                <form action="">
+                <form action="/users/loginUsers/" name="form" method="post" onsubmit="return validateLogin()">
+                    {% csrf_token %}      
                     <input type="text" name="documentNumber" id="documentNumber" placeholder="Nombres*" required>
                     <br>
                     
@@ -80,7 +81,7 @@
                     <input type="password" name="password" id="password" placeholder="Contraseña*" required>                
                     <br>                
 
-                    <button class="buttonRegister buttonColor1" type="submit">Crear Cuenta</button>
+                    <button class="buttonRegister buttonColor1" type="submit">Iniciar Sesión</button>
                     <br>
                     <button class="buttonRegister buttonColor2">
                         <a href="{% url 'home' %}">¿No tienes cuenta?</a>
@@ -94,6 +95,46 @@
     </div>
 
     {% include 'components/footer.html' %}
+
+
+    <script src="{% static 'js/validateLogin.js' %}"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    {% for i in messages %}
+        {% if i.tags == 'success' %}
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Felicidades',
+                text: '{{i}}',
+                confirmButtonText: "Siguiente",
+                allowEnterKey:true,
+                allowOutsideClick:false,
+                confirmButtonColor:"#4db600",
+                allowOutsideClick : false,
+                allowEscapeKey : false,
+                }
+            )
+        </script>
+
+        {% else %}
+            <script>
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Usuario ya existente',
+                    text: '{{i}}',
+                    confirmButtonText: "Siguiente",
+                    allowEnterKey:true,
+                    allowOutsideClick:false,
+                    confirmButtonColor:"#00b6a0",
+                    allowOutsideClick : false,
+                    allowEscapeKey : false
+                    }
+                )
+            </script>
+        {% endif %}
+    {% endfor %}
 
 </body>
 </html>
