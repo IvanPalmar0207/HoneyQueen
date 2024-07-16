@@ -49,9 +49,15 @@
                     </div>          
                     <h3>Precio: {{i.productPrice}} COP</h3>      
                 </div>
-                <button class="buttonBuyProduct">
-                    <a href="/cart/chooseProduct/{{i.productId}}">Comprar</a>
-                </button>
+                {% if request.user.is_authenticated %}
+                    <button class="buttonBuyProduct">
+                        <a href="/cart/chooseProduct/{{i.productId}}">Comprar</a>
+                    </button>
+                {% else %}
+                    <button class="buttonBuyProduct">
+                        <a href="{% url 'login' %}">Comprar</a>
+                    </button>
+                {% endif %}
             </div>
             {% endfor %}
         </div>                                                                                          

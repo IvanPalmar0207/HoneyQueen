@@ -12,11 +12,6 @@
 </head>
 <body>
     {% include 'components/navbarMain.html' %}
-
-    {% if request.user.is_authenticated %}
-        <h1>{{user.documentNumber}}</h1>
-    {% endif %}
-
     <div>
         <div class="containerSubBar">
             <div class="subMenuInfo">
@@ -45,12 +40,18 @@
 
             <div class="buttonsInfo">
                 <div class="containerButtonMain">
-                    <button>
-                        <a href="{% url 'login' %}">INICIAR SESIÓN</a>
-                    </button>
-                    <button>
-                        <a href="{% url 'home' %}">REGISTRARSE</a>
-                    </button>                                        
+                    {% if request.user.is_authenticated %}
+                        <button>
+                            <a href = "{% url 'exit' %}">CERRAR SESIÓN</a>
+                        </button>                                        
+                    {% else %}
+                        <button>
+                            <a href = "{% url 'login' %}">INICIAR SESIÓN</a>
+                        </button>
+                        <button>
+                            <a href = "{% url 'home' %}">REGISTRARSE</a>
+                        </button>                                        
+                    {% endif %}
                 </div>
             </div>
 
@@ -96,9 +97,15 @@
 
                     <button class="buttonRegister buttonColor1" type="submit">Registrarse</button>
                     <br>
-                    <button class="buttonRegister buttonColor2">
-                        <a href="{% url 'login' %}">Ya te encuentras registrado</a>
-                    </button>
+                    {% if request.user.is_authenticated %}
+                        <button class="buttonRegister buttonColor2">
+                            <a href="{% url 'exit' %}">Cerrar Sesión</a>
+                        </button>
+                    {% else %}
+                        <button class="buttonRegister buttonColor2">
+                            <a href="{% url 'login' %}">Ya te encuentras registrado</a>
+                        </button>
+                    {% endif %}
                 </form>
             </div>
         </div>
@@ -109,6 +116,41 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.5/sweetalert2.all.min.js"></script>
 
     <script src="{% static 'js/validateRegister.js' %}"></script>
+
+    {% for i in messages %}
+        {% if i.tags == 'success' %}
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Felicidades',
+                    text: '{{i}}',
+                    confirmButtonText: "Siguiente",
+                    allowEnterKey:true,
+                    allowOutsideClick:false,
+                    confirmButtonColor:"#4db600",
+                    allowOutsideClick : false,
+                    allowEscapeKey : false,
+                    }
+                )
+            </script>
+        {% else %}
+            <script>
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Inicio de sesión incorrecto',
+                    text: '{{i}}',
+                    confirmButtonText: "Siguiente",
+                    allowEnterKey:true,
+                    allowOutsideClick:false,
+                    confirmButtonColor:"#00b6a0",
+                    allowOutsideClick : false,
+                    allowEscapeKey : false
+                    }
+                )
+            </script>
+        {% endif %}
+    {% endfor %}
+
 </body> 
 </html>
 

@@ -35,19 +35,25 @@
                             <a href="">BLOG</a>
                         </li>
                 </ul>
-                <a href="{% url 'allProducts' %}">
-                    <i class="bi bi-cart-fill"></i>
-                </a>
+                    <a href="{% url 'allProducts' %}">
+                        <i class="bi bi-cart-fill"></i>
+                    </a>
             </div>
 
             <div class="buttonsInfo">
                 <div class="containerButtonMain">
-                    <button>
-                        <a href="{% url 'login' %}">INICIAR SESIÓN</a>
-                    </button>
-                    <button>
-                        <a href="{% url 'home' %}">REGISTRARSE</a>
-                    </button>                                        
+                    {% if request.user.is_authenticated %}
+                        <button>
+                            <a href = "{% url 'exit' %}">CERRAR SESIÓN</a>
+                        </button>                                        
+                    {% else %}
+                        <button>
+                            <a href = "{% url 'login' %}">INICIAR SESIÓN</a>
+                        </button>
+                        <button>
+                            <a href = "{% url 'home' %}">REGISTRARSE</a>
+                        </button>                                        
+                    {% endif %}                                    
                 </div>
             </div>
 
@@ -72,7 +78,7 @@
                 <h4>INICIAR SESIÓN</h4>
                 <form action="/users/loginUsers/" name="form" method="post" onsubmit="return validateLogin()">
                     {% csrf_token %}      
-                    <input type="text" name="documentNumber" id="documentNumber" placeholder="Nombres*" required>
+                    <input type="text" name="documentNumber" id="documentNumber" placeholder="Numero de Documento*" required>
                     <br>
                     
                     <input type="email" name="email" id="email" placeholder="Correo Electronico*" required>                
@@ -87,7 +93,7 @@
                         <a href="{% url 'home' %}">¿No tienes cuenta?</a>
                     </button>
                     <div class="forgotPassword">
-                        <a href="">¿Olvidaste tu contraseña?</a>
+                        <a href="{% url 'reset_password'%}">¿Olvidaste tu contraseña?</a>
                     </div>
                 </form>
             </div>

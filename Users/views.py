@@ -1,9 +1,12 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect
+from django.urls import reverse_lazy
 #User Model
 from Users.models import User
 #Authenticate
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login, logout
+#Change Password
+from django.contrib.auth.views import PasswordChangeView
 #Messages
 from django.contrib import messages
 
@@ -29,15 +32,25 @@ def registerUser(request):
     except:
         pass
 
+#Login in the system
 def loginUser(request):
     if request.method == 'POST':
         documentNumber = request.POST['documentNumber']
         email = request.POST['email']
         password = request.POST['password']
         
-        user = authenticate(request, email=email, password=password)
+        user = authenticate(documentNumber = documentNumber, email = email, password = password)
 
-    if user is None:
-        return HttpResponse('Puta')
-    else:
-        return HttpResponse('Hola')
+        if user:
+            login(request,user)
+            messages.success(request,'Has iniciado sesión correctamente')
+            return redirect('/')
+        else:
+            messages.error(request,'El usuario no se encuentra, intenta nuevamente')
+            return redirect('/')
+
+#Logout function
+def exit(request):
+    logout(request)
+    messages.success(request,'Has cerrado sesión correctamente')
+    return redirect('/')

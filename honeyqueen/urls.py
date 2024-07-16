@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls.static import static
 from django.conf import settings
+#Password
+from django.contrib.auth import views as authViews
 #ProjectViews
 from honeyqueen.views import home, login, allProducts
 
@@ -25,6 +27,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name = 'home'),
     path('login', login, name = 'login'),
+
+    path('password_reset/',authViews.PasswordResetView.as_view(template_name = 'passwordReset/password_reset.html'), name = 'reset_password'),
+    path('password_reset_done/',authViews.PasswordResetDoneView.as_view(template_name = 'passwordReset/password_reset_done.html'), name = 'password_reset_done'),
+    path('password-reset-confirm/<uidb64>/<token>',authViews.PasswordResetConfirmView.as_view(template_name = 'passwordReset/password_reset_confirm.html'), name = 'password_reset_confirm'),
+    path('password-reset-complete/',authViews.PasswordResetCompleteView.as_view(template_name = 'passwordReset/password_reset_complete.html'), name = 'password_reset_complete'),
+
     path('allProducts', allProducts, name = 'allProducts'),
     path('users/', include('Users.urls')),
     path('products/', include('Products.urls')),
