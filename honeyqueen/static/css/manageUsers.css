@@ -1,0 +1,203 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.containerUsers{
+    padding: 80px;
+}
+
+.containerGoBack{
+    width: 100%;
+    font-size: 35px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    text-decoration: underline;
+    font-weight: bold;
+    color:rgb(37, 181, 234);
+    text-decoration: none;
+}
+
+.containerGoBack:hover{
+    text-decoration: underline;
+    transition: all ease-in 0.3s;
+}
+
+.containerGoBack a{
+    text-decoration: none;
+    color:rgb(37, 181, 234);
+}
+
+.titleUsers{
+    text-align: center;
+    margin-top: 30px;
+    color:rgb(37, 181, 234);
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    text-decoration: underline;
+    font-size: large;
+}
+
+.containerAddUser{
+    margin-top: 50px;
+    text-align: end;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    margin-left: -1%;
+}
+
+.containerSubAdd{
+    padding: 17px;
+    padding-left: 25px;
+    padding-right: 25px;
+    background-color: #58b3d6;
+    border-radius: 25px;
+}
+
+.containerSubAdd:hover{
+    transition: all ease-in-out 0.5s;
+    background-color: black;
+    cursor: pointer;
+}
+
+.containerSubAdd a{
+    text-decoration: none;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.containerSubAdd h3{
+    color: white;
+    font-size: large;
+}
+
+.containerTable table{
+    margin-top: 50px;
+    width: 100%;
+}
+
+.containerTable thead{
+    background-color: #58b3d6;
+}
+
+.containerTable thead tr{
+    height: 50px;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: medium;
+    font-weight: bolder;
+    font-style: normal;
+    color: white;    
+}
+
+.containerTable thead th{
+    width: 15%;
+}
+
+.containerTable tbody td{
+    width: 15%;
+    height: 50px;
+    text-align: center;
+    background-color: rgb(229, 229, 229);
+    font-family: "Montserrat", sans-serif;
+    font-size: medium;
+    font-weight: 400;
+    font-style: normal;
+    padding: 13px;
+}
+
+.optionsFile{
+    padding: 25px;
+}
+
+.options{
+    font-size: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.clientDelete{
+    color: #ff7b8a;    
+}
+
+.clientUpdate{
+    color: #58b3d6;
+}
+
+@media (max-width: 1400px) {
+
+    .containerUsers{
+        padding: 30px;
+    }    
+
+    .containerGoBack{
+        font-size: 30px;
+    }
+
+    .containerTable table{
+        width: 100%;
+    }
+    
+    .containerTable thead tr{
+        font-size: smaller;
+    }
+
+    .containerTable tbody td{        
+        padding: 10px;
+        font-size:x-small;
+    }
+}
+
+
+@media (max-width:1500px) {
+    .containerCartProducts{
+        flex-direction: column;
+    }
+
+    .containerAllProducts{
+        padding: 20px;
+    }
+
+    .containerSendProduct{
+        width: 100%;
+        border: none;
+        text-align: center;
+        padding-right: 70px;
+    }
+
+}
+
+@media (max-width: 767px) {
+    .containerTable table thead {
+        display: none;
+    }
+    
+    .containerTable table tr {
+        padding-top: 10px;
+        margin-bottom: 0.625em;
+        display: block;
+        border-bottom: 2px solid #ddd;
+        background-color: rgb(229, 229, 229);
+        background-color: #58b3d6;
+    }
+    
+    .containerTable table td {
+        display: block;
+        width: 100%;
+        position: relative;
+        padding-left: 50%;                         
+    }
+    
+    .containerTable table td::before {
+        content: attr(data-label);
+        position: absolute;        
+        left: 0;
+        width: 50%;
+        padding-left: 25px;
+        font-weight: bold;
+        text-align: left;
+    }
+}

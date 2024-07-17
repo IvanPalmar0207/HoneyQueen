@@ -15,27 +15,42 @@
     <div>
         <div class="containerSubBar">
             <div class="subMenuInfo">
-                <div class="containerIconsMain">
-                    <i class="bi bi-facebook"></i>
-                    <i class="bi bi-instagram"></i>
-                    <i class="bi bi-tiktok"></i>
-                </div>
+                {% if request.user.is_superuser %}
+                {% else %}
+                    <div class="containerIconsMain">
+                        <i class="bi bi-facebook"></i>
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-tiktok"></i>
+                    </div>
+                {% endif %}
                 <ul>
-                    {% for i in categories %}
-                        <li>
-                            <a href="products/seeProducts/{{i.categoryId}}">{{i.categorieName}}</a>
-                        </li>                 
-                    {% endfor %}
-                        <li>
-                            <a href="">NOTICIAS</a>
-                        </li>
-                        <li>
-                            <a href="">BLOG</a>
-                        </li>
-                </ul>
-                <a href="{% url 'allProducts' %}">
-                    <i class="bi bi-cart-fill"></i>
-                </a>
+                    {% if request.user.is_superuser%}
+                            <li>
+                                <a href="{% url 'manageUsers' %}">GESTIÓN DE USUARIOS</a>
+                            </li>        
+                            <li>
+                                <a href="">GESTIÓN DE PRODUCTOS</a>
+                            </li>
+                        {% else %}
+                            {% for i in categories %}
+                                <li>
+                                    <a href="products/seeProducts/{{i.categoryId}}">{{i.categorieName}}</a>
+                                </li>                 
+                            {% endfor %}                            
+                        {% endif %}
+                            <li>
+                                <a href="">NOTICIAS</a>
+                            </li>
+                            <li>
+                                <a href="">BLOG</a>
+                            </li>
+                    </ul>
+                    {% if request.user.is_superuser %}
+                    {% else %}
+                        <a href="{% url 'allProducts' %}">
+                            <i class="bi bi-cart-fill"></i>
+                        </a>
+                    {% endif %}
             </div>
 
             <div class="buttonsInfo">
@@ -55,7 +70,7 @@
                 </div>
             </div>
 
-        </div>
+        </div>        
 
         <div class="containerAccountAll">
             <div class="containerAccount">
@@ -128,7 +143,6 @@
                     allowEnterKey:true,
                     allowOutsideClick:false,
                     confirmButtonColor:"#4db600",
-                    allowOutsideClick : false,
                     allowEscapeKey : false,
                     }
                 )
@@ -137,11 +151,10 @@
             <script>
                 Swal.fire({
                     icon: 'info',
-                    title: 'Inicio de sesión incorrecto',
+                    title: 'Opps...',
                     text: '{{i}}',
                     confirmButtonText: "Siguiente",
                     allowEnterKey:true,
-                    allowOutsideClick:false,
                     confirmButtonColor:"#00b6a0",
                     allowOutsideClick : false,
                     allowEscapeKey : false

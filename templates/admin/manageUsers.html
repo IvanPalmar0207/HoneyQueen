@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">    
+    <link rel="shortcut icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/manageUsers.css' %}">
+    <title>Gestión - Usuarios</title>
+</head>
+<body>
+
+    {% include 'components/navbarMain.html' %}
+    
+    <div class="containerUsers">
+        <div class="containerGoBack">
+            <a href="{% url 'home' %}">
+                <i class="bi bi-house-fill"></i>
+            </a>
+        </div>
+
+        <div class="titleUsers">
+            <h2>Administración de Usuarios</h2>
+        </div>
+
+        <div>
+            <div class="containerAddUser">
+                <div class="containerSubAdd">
+                    <a href="">
+                        <h3>
+                            <i class="bi bi-person-fill-add"></i>
+                            Añadir Usuario
+                        </h3>
+                    </a>
+                </div>
+            </div>
+
+            <div class="containerCartProducts">
+                <div>
+                    <div>
+                        <div class='containerTable'>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Numero de Documento</th>
+                                        <th>Nombre Completo</th>
+                                        <th>Correo Electronico</th>
+                                        <th class="optionsFile">Opciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for user in users %}
+                                        <tr>
+                                            <td data-label='Numero de Documento'>{{user.documentNumber}}</td>     
+                                            <td data-label='Nombre Completo'>{{user.fullName}}</td>                                    
+                                            <td data-label='Correo Electronico'>{{user.email}}</td>                                    
+                                            <td data-label="Opciones">
+                                                <a href="">
+                                                    <i class="bi bi-arrow-repeat options clientUpdate"></i> 
+                                                </a>                                    
+                                                <a href="">
+                                                    <i class="bi bi-trash3-fill options clientDelete"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div>
+    </div>
+    
+    {% include 'components/footer.html' %}
+
+</body>
+</html>

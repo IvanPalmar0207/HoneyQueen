@@ -18,3 +18,8 @@ class tb_cartItem(models.Model):
     cartId = models.ForeignKey(tb_cart, on_delete = models.CASCADE, verbose_name = 'Cart Id')
     cartQuantity = models.IntegerField(default = 0)
     cartSize = models.ForeignKey(tb_sizes, on_delete = models.CASCADE, verbose_name = 'Cart Size')
+
+    @property
+    def price(self):
+        priceTotal = self.cartProduct.productPrice * self.cartQuantity
+        return priceTotal
