@@ -102,4 +102,21 @@
     {% include 'components/footer.html' %}
 
 </body>
+
+{% for i in messages %}
+    {% if i.tags == 'success' %}
+        <script>
+            Swal.fire({
+                
+            })
+        </script>
+    {% else %}
+        <script>
+            Swal.fire({
+                
+            })
+        </script>
+    {% endif %}
+{% endfor %}
+
 </html>

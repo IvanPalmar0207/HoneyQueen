@@ -5,8 +5,6 @@ from django.urls import reverse_lazy
 from Users.models import User
 #Authenticate
 from django.contrib.auth import authenticate, login, logout
-#Change Password
-from django.contrib.auth.views import PasswordChangeView
 #Messages
 from django.contrib import messages
 

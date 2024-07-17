@@ -54,7 +54,7 @@
 
                 <div class="containerProduct">
                     
-                    <form action = "/cart/allProducts/" method="post">{% csrf_token %}
+                    <form action = "/cart/addCart/{{product.productId}}" method="post">{% csrf_token %}
                         <label for="sizedList">Elige una talla:</label>
                         <br>
                         <br>
@@ -73,10 +73,11 @@
                         <label for = "buttonLess">Cantidad:</label>
                         <br>
                         <br>
-                        <div class="containerQuantity">
-                            <div class="buttonQuantity" id = "decrementBtn">-</div>
-                            <div class="numberQuantity" name = "counterValue" id = "counterValue">0</div>
-                            <div class="buttonQuantity" id = "incrementBtn">+</div>
+                        <div class="containerQuantity">                        
+                            <input type="hidden" name="counterValue" id = "quantity" value = "1">
+                            <button type="button" class="buttonQuantity" id = "decrementBtn" onclick="decrementQuantity()">-</button>
+                            <span class="numberQuantity" name = "counterValue" id = "quantity-display">1</span>
+                            <button type="button" class="buttonQuantity" id = "incrementBtn" onclick="incrementQuantity()">+</button>
                         </div>
 
                         <br>
@@ -98,6 +99,30 @@
 
 </body>
 
-<script src="{% static 'js/counter.js' %}"></script>
+<script>
+        function incrementQuantity(){
+        var quantityInput = document.getElementById('quantity')
+        var quantityDisplay = document.getElementById('quantity-display')
+        var quantity = parseInt(quantityInput.value)
+        quantity ++;
+        quantityInput.value = quantity
+        quantityDisplay.textContent = quantity
+    }
+
+    function decrementQuantity(){
+        var quantityInput = document.getElementById('quantity')
+        var quantityDisplay = document.getElementById('quantity-display')
+        var quantity = parseInt(quantityInput.value)
+
+        if(quantity > 1){
+            quantity --;
+            quantityInput.value = quantity
+            quantityDisplay.textContent = quantity
+        }   
+        else if(quantity < 1){
+            quantity = 1;
+        } 
+    }
+</script>
 
 </html>
