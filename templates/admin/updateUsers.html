@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">    
+    <link rel="shortcut icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/users/newUser.css' %}">
+    <title>Actualizar Usuario</title>
+</head>
+<body>
+
+    {% include 'components/navbarMain.html' %}
+
+    <section class="containerNewUser">
+        <div class="containerGoBack">
+            <a href="{% url 'manageUsers' %}">
+                <i class="bi bi-arrow-left-circle"></i>
+            </a>
+        </div>
+
+        <div class="titleUsers">
+            <h2>Actualización de Usuarios</h2>
+        </div>
+
+        <div class="contextPage">
+            <p>
+                En este apartado del aplicativo, como administrador podras realizar la actualización de un usuario en especifico en datos como
+                su nombre completo, email y contraseña. La actualización de datos se da con la intención de que al momento de que los usuarios
+                inicien sesión sean identificados de una manera diferente dentro el sistema.
+            </p>
+        </div>
+
+        <div class="containerForm">
+            <div class="containerFormRegister">
+            <h4>ACTUALIZAR</h4>
+            <form action="/users/updateUsers/{{user.documentNumber}}" method = "POST" name="form" onsubmit="return validateRegister()">
+                {% csrf_token %}      
+                <input type="text" name="documentNumber" id="documentNumber" value = "{{user.documentNumber}}" disabled>
+                <br>
+                
+                <input type="text" name="namesUser" id="namesUser" value = "{{user.fullName}}" required>                
+                <br>
+                
+                <input type="email" name="emailUser" id="emailUser" value = "{{user.email}}" required>                
+                <br>
+
+                <input type="password" name="passwordUser" id="passwordUser" placeholder="Contraseña*" required>                
+                <br>
+
+                <div class="containerTextAccount">
+                    <p>
+                        Sus datos personales se utilizaran para respaldar su experiencia en este sitio web para, administrar
+                        el acceso a su cuenta, además de tener otros dines descritos en nuestra politica de privacidad.
+                    </p>
+                </div>
+
+                <button class="buttonRegister buttonColor1" type="submit">Actualizar Usuario</button>
+                <br>
+            </form>
+            </div>
+        </div>
+
+
+    </section>
+
+    {% include 'components/footer.html' %}
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.5/sweetalert2.all.min.js"></script>
+<script src="{% static 'js/validateRegister.js' %}"></script>
+
+</html>

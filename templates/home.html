@@ -29,7 +29,7 @@
                                 <a href="{% url 'manageUsers' %}">GESTIÓN DE USUARIOS</a>
                             </li>        
                             <li>
-                                <a href="">GESTIÓN DE PRODUCTOS</a>
+                                <a href="{% url 'manageProducts' %}">GESTIÓN DE PRODUCTOS</a>
                             </li>
                         {% else %}
                             {% for i in categories %}
@@ -151,7 +151,7 @@
             <script>
                 Swal.fire({
                     icon: 'info',
-                    title: 'Opps...',
+                    title: 'Opss...',
                     text: '{{i}}',
                     confirmButtonText: "Siguiente",
                     allowEnterKey:true,

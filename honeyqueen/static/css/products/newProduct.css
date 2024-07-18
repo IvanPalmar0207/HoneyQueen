@@ -1,130 +1,66 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-.containerSubBar{
-    display: flex;
-    margin: 50px;
-    justify-content: space-around;
+.containerNewUser{
+    padding: 80px;
 }
 
-.subMenuInfo{
-    display: flex;
-    align-items: center;
-}
-
-.subMenuInfo ul{
-    margin-left: 20px;
-    margin-right: 20px
-}
-
-.subMenuInfo ul li{
-    display: inline-block;
-    padding: 8px;
-    font-size: 15px;
+.containerGoBack{
+    width: 100%;
+    font-size: 35px;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
-    border-left: 1px solid rgb(35, 182, 234);
-}
-
-li a{
-    color: rgb(35,182, 234);
-}
-
-.subMenuInfo .bi{
-    font-size: 25px;
-    padding: 10px;
-    margin: 5px;
-    border-radius: 100%;
-    color: white;
-    background-image: url('../img/buttonIcon/iconBack.png');
-    background-position: center;
-    background-size: cover;
-    cursor: pointer;
-}
-
-.subMenuInfo .bi:hover{
-    background-image: none;
-    background-color: black;
-    cursor: pointer;
-    transition: all ease-in-out 0.3s;
-}
-
-.containerButtonMain{
-    width: 100%;
-}
-
-.containerButtonMain button{
-    padding: 15px;
-    margin-left: 10px;
-    border-radius: 15px;
-    background-image: url('../img/buttonIcon/buttonBack.png');
-    background-position: center;
-    background-size: cover;
-    border: none;
-    cursor: pointer;
-}
-
-.containerButtonMain button:hover{
-    background-image: none;
-    background-color: black;
-    cursor: pointer;
-    transition: all ease-in-out 0.3s;
-}
-
-
-.containerButtonMain button a{
-    color: white;
+    text-decoration: underline;
+    font-weight: bold;
+    color:rgb(37, 181, 234);
     text-decoration: none;
-    font-size: 15px;
+}
+
+.containerGoBack:hover{
+    text-decoration: underline;
+    transition: all ease-in 0.3s;
+}
+
+.containerGoBack a{
+    text-decoration: none;
+    color:rgb(37, 181, 234);
+}
+
+.containerGoBack:hover i{
+    color: black;
+    transition: all ease-in-out 0.3s;
+}
+
+.titleUsers{
+    text-align: center;
+    margin-top: 30px;
+    color:rgb(37, 181, 234);
     font-weight: bold;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
+    text-decoration: underline;
+    font-size: large;
 }
 
-.containerAccountAll{
-    padding-top: 40px;
-    padding-bottom: 60px;
+.contextPage{
+    margin-top: 40px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-size: medium;
+}
+
+.containerForm{
     display: flex;
-    justify-content: space-evenly;
-}
-
-.containerAccount{
-    display: flex;
-    justify-content: space-between;
-    width: 60%;
-}
-
-.containerCardAccount{
-    width: 30%;
-    text-align: center;
-    padding-top: 30px;
-    border-radius: 60px;
-}
-
-.back1{
-    background-image: url('../img/cardsImg/cardBackground.png');
-    background-size: cover;
-    background-position: center;
-}
-
-.back2{
-    background-image: url('../img/cardsImg/cardBackground2.png');
-    background-size: cover;
-    background-position: center;
-}
-
-.containerCardAccount img{
-    width: 80%;
-    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
 }
 
 .containerFormRegister{
-    width: 22%;
+    width: 34%;
     border: 2px solid rgb(112, 179, 227);
     text-align: center;
     padding: 20px;
@@ -138,22 +74,55 @@ li a{
     font-weight: bold;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
-    text-decoration: underline;
 }
 
 .containerFormRegister input{
     width: 100%;
     height: 40px;
-    margin-top: 15px;
+    margin-top: 20px;
     border: 2px solid rgb(112, 179, 227);
     color: rgb(31, 128, 163);
     padding-left: 10px;
 }
 
-.containerTextAccount{
-    text-align: justify;
-    color: rgb(112, 179, 227);
-    margin-top: 10px;
+.containerFormRegister textarea{
+    width: 100%;
+    margin-top: 20px;
+    border: 2px solid rgb(112, 179, 227);
+    color: rgb(31, 128, 163);
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.containerFormRegister select{
+    width: 100%;
+    border: 2px solid rgb(112, 179, 227);
+    color: rgb(31, 128, 163);
+    padding: 10px;
+    padding-left: 10px;
+    text-align: center;
+    background-color: white;
+}
+
+.containerLabel{
+    text-align: start;
+    color:rgb(37, 181, 234);
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    margin-top: 15px;
+}
+
+.containerSize{
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: -20px;
+}
+
+.containerSize input{
+    height: 30px;
+    margin-top: 0px;
 }
 
 .buttonRegister{
@@ -184,11 +153,52 @@ li a{
     text-decoration: none;
 }
 
-.buttonColor2{
-    background-color: rgb(27, 157, 217);
+.containerQuantity{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: -10px;
+    height: 5%;
+}
+
+.buttonQuantity{
+    width: 13%;
+    height: 50px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bolder;
+    color: white;
+    margin: 12px;
+    background-color: rgb(41, 182, 234);
+    padding: 10px;
+    border-radius: 100%;
+    border: none;
+}
+
+.buttonQuantity:hover{
+    cursor: pointer;
+    background-color: black;
+    transition: all ease-in-out 0.3s;
+}
+
+.numberQuantity{
+    font-size: 20px;
 }
 
 @media (max-width: 1200px) {
+    .containerNewUser{
+        padding: 10px;   
+    }
+
+    .containerForm{
+        padding: 0px;
+        width: 100%;
+    }
+
+    .containerSize input{
+        height: 20px;
+    }
+
     .subMenuInfo ul li{
         padding: 5px;
         font-size: 12px;

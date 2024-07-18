@@ -7,7 +7,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">    
     <link rel="shortcut icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/manageUsers.css' %}">
-    <title>Gestión - Usuarios</title>
+    <title>Gestión - Productos</title>
+    <style>
+        td img{
+            width: 150px;
+            height: 200px;
+        }
+    </style>
 </head>
 <body>
 
@@ -21,25 +27,26 @@
         </div>
 
         <div class="titleUsers">
-            <h2>Administración de Usuarios</h2>
+            <h2>Inventario de Productos</h2>
         </div>
 
         <div class="contextPage">
             <p>
-                Bienvenido usuario administrador, aqui podras encontrar el apartado donde podras gestionar a todos los diferentes usuarios que hacen
-                parte del sistema de información, podras realizar operaciones de inserción para un nuevo usuario donde se tendran que completar todos los diferentes datos correspondientes que haran parte de la base de datos,
-                tambien como administrador podras realizar acciones de actualización de usuarios donde se podran actualizar campos especificos de un unico usuario, y por ultimo pero no menos importante
-                como administrador podras elegir a los diferentes usuarios para poder eliminarlos del sistema de información y que ya no puedan acceder sin una creación previa de una cuenta de usuario.
+                Bienvenido usuario administrador, te encuentras en el apartado de productos en el cual podras realizar la gestión de tu propio inventario de productos,
+                podras visualizar absolutamente todos los productos que se encuentran dentro de tu base de datos, tendras la opción de poder agregar nuevos productos 
+                con sus respectivas caracteristicas, imagen y precio, al elegir un produto en especifico podras actualizarlo y eliminarlo, al momento de la actualización
+                al producto se le podran actualizar todas sus respectivas caracteristicas, y la ultima opción es la de eliminar en la cual se elegira un producto en especifico y 
+                podras realizar la eliminación correspondiente dentro del sistema.
             </p>
         </div>
 
         <div>
             <div class="containerAddUser">
                 <div class="containerSubAdd">
-                    <a href="{% url 'renderInsertUser' %}">
+                    <a href="{% url 'renderInsertProducts' %}">
                         <h3>
-                            <i class="bi bi-person-fill-add"></i>
-                            Añadir Usuario
+                            <i class="bi bi-bag-plus-fill"></i>
+                            Añadir Producto
                         </h3>
                     </a>
                 </div>
@@ -52,32 +59,43 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Numero de Documento</th>
-                                        <th>Nombre Completo</th>
-                                        <th>Correo Electronico</th>
-                                        <th>Administrador</th>
+                                        <th>Nombre del Producto</th>
+                                        <th>Descripción</th>
+                                        <th>Precio</th>
+                                        <th>Unidades</th>
+                                        <th>Imagen</th>
+                                        <th>Categoria</th>
+                                        <th>Referencia</th>
+                                        <th>Tallas</th>
                                         <th class="optionsFile">Opciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for user in users %}
-                                        {% if request.user.documentNumber == user.documentNumber%}
-                                        {% else %}
+                                    {% for product in products %}
                                         <tr>
-                                            <td data-label='Numero de Documento'>{{user.documentNumber}}</td>     
-                                            <td data-label='Nombre Completo'>{{user.fullName}}</td>                                    
-                                            <td data-label='Correo Electronico'>{{user.email}}</td>                                    
-                                            <td data-label='Correo Electronico'>{{user.is_superuser}}</td> 
+                                            <td data-label='Numero del Producto'>{{product.productName}}</td>     
+                                            <td data-label='Descripción del Producto'>{{product.productDescription}}</td>                                    
+                                            <td data-label='Precio del Producto'>{{product.productPrice}}</td>                                    
+                                            <td data-label='Unidades'>{{product.productStock}}</td> 
+                                            <td data-label='Imagen'>
+                                                <img src="{{product.productImage.url}}" alt="ImageProduct">
+                                            </td> 
+                                            <td data-label='Categoria'>{{product.categoryId.categorieName}}</td> 
+                                            <td data-label='Referencia'>{{product.referenceId.referenceDescription}}</td> 
+                                            <td data-label='Tallas'>
+                                                {% for size in product.sizeId.all%}
+                                                    {{size.sizeName}}
+                                                {% endfor %}
+                                            </td> 
                                             <td data-label="Opciones">
-                                                <a href="/users/renderUpdateUser/{{user.documentNumber}}">
+                                                <a href="">
                                                     <i class="bi bi-arrow-clockwise options clientUpdate"></i>                                                    
                                                 </a>                                    
-                                                <a href="#" onclick="deleteUser('{{user.documentNumber}}')">
+                                                <a href="#" onclick="deleteProduct('{{product.productId}}')">
                                                     <i class="bi bi-trash3-fill options clientDelete"></i>
                                                 </a>
                                             </td>
-                                        </tr>
-                                        {% endif %}
+                                        </tr>                                        
                                     {% endfor %}
                                 </tbody>
                             </table>
@@ -94,7 +112,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.5/sweetalert2.all.min.js"></script>
 
 <script>
-    function deleteUser(id){        
+    function deleteProduct(productId){        
         Swal.fire({
             icon : 'question',
             title : '¿Estas Seguro?',
@@ -108,7 +126,7 @@
         })
         .then(function(result){
             if(result.isConfirmed){
-                window.location.href = '/users/deleteUsers/'+id
+                window.location.href = '/users/deleteProducts/'+productId
             }
         })
     }

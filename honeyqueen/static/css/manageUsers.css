@@ -29,6 +29,11 @@
     color:rgb(37, 181, 234);
 }
 
+.containerGoBack i:hover{
+    color: black;
+    transition: all ease-in-out 0.3s;
+}
+
 .titleUsers{
     text-align: center;
     margin-top: 30px;
@@ -40,8 +45,16 @@
     font-size: large;
 }
 
+.contextPage{
+    margin-top: 40px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-size: medium;
+    text-align: justify;
+}
+
 .containerAddUser{
-    margin-top: 50px;
+    margin-top: 40px;
     text-align: end;
     width: 100%;
     display: flex;
@@ -50,7 +63,7 @@
 }
 
 .containerSubAdd{
-    padding: 17px;
+    padding: 15px;
     padding-left: 25px;
     padding-right: 25px;
     background-color: #58b3d6;
@@ -113,10 +126,15 @@
 }
 
 .options{
-    font-size: 25px;
+    font-size: 30px;
     margin-left: 10px;
     margin-right: 10px;
     cursor: pointer;
+}
+
+.options:hover{
+    color: black;
+    transition: all ease-in-out 0.3s;
 }
 
 .clientDelete{
@@ -125,6 +143,7 @@
 
 .clientUpdate{
     color: #58b3d6;
+    font-weight: bold;
 }
 
 @media (max-width: 1400px) {
@@ -171,6 +190,14 @@
 }
 
 @media (max-width: 767px) {
+    .titleUsers{
+        font-size: small;
+    }
+
+    .contextPage{
+        font-size: small;
+    }
+    
     .containerTable table thead {
         display: none;
     }
@@ -200,4 +227,17 @@
         font-weight: bold;
         text-align: left;
     }
+
+    .options{
+        font-size: 20px;
+    }
+
+    .containerSubAdd{
+        padding: 10px;
+    }
+
+    .containerSubAdd h3{
+        font-size: small;
+    }
+
 }
