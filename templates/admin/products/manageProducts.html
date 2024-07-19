@@ -32,11 +32,11 @@
 
         <div class="contextPage">
             <p>
-                Bienvenido usuario administrador, te encuentras en el apartado de productos en el cual podras realizar la gestión de tu propio inventario de productos,
-                podras visualizar absolutamente todos los productos que se encuentran dentro de tu base de datos, tendras la opción de poder agregar nuevos productos 
-                con sus respectivas caracteristicas, imagen y precio, al elegir un produto en especifico podras actualizarlo y eliminarlo, al momento de la actualización
-                al producto se le podran actualizar todas sus respectivas caracteristicas, y la ultima opción es la de eliminar en la cual se elegira un producto en especifico y 
-                podras realizar la eliminación correspondiente dentro del sistema.
+                Bienvenido usuario administrador, te encuentras en el apartado de productos en el cual podrás realizar la gestión de tu propio inventario de productos,
+                podrás visualizar absolutamente todos los productos que se encuentran dentro de tu base de datos, tendrás la opción de poder agregar nuevos productos 
+                con sus respectivas características, imagen y precio, al elegir un producto en específico podrás actualizarlo y eliminarlo, al momento de la actualización
+                al producto se le podrán actualizar todas sus respectivas características, y la última opción es la de eliminar en la cual se elegirá un producto en específico y 
+                podrás realizar la eliminación correspondiente dentro del sistema.
             </p>
         </div>
 
@@ -64,7 +64,7 @@
                                         <th>Precio</th>
                                         <th>Unidades</th>
                                         <th>Imagen</th>
-                                        <th>Categoria</th>
+                                        <th>Categoría</th>
                                         <th>Referencia</th>
                                         <th>Tallas</th>
                                         <th class="optionsFile">Opciones</th>
@@ -80,7 +80,7 @@
                                             <td data-label='Imagen'>
                                                 <img src="{{product.productImage.url}}" alt="ImageProduct">
                                             </td> 
-                                            <td data-label='Categoria'>{{product.categoryId.categorieName}}</td> 
+                                            <td data-label='Categoría'>{{product.categoryId.categorieName}}</td> 
                                             <td data-label='Referencia'>{{product.referenceId.referenceDescription}}</td> 
                                             <td data-label='Tallas'>
                                                 {% for size in product.sizeId.all%}
@@ -88,7 +88,7 @@
                                                 {% endfor %}
                                             </td> 
                                             <td data-label="Opciones">
-                                                <a href="">
+                                                <a href="/users/renderUpdateProducts/{{product.productId}}">
                                                     <i class="bi bi-arrow-clockwise options clientUpdate"></i>                                                    
                                                 </a>                                    
                                                 <a href="#" onclick="deleteProduct('{{product.productId}}')">
@@ -152,6 +152,7 @@
             Swal.fire({
                 icon : 'info',
                 title : 'Opss...',
+                text : '{{message}}',
                 confirmButtonText : 'Siguiente',
                 allowEnterKey : true,
                 confirmButtonColor : '#00b6a0',

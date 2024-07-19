@@ -29,7 +29,7 @@ class tb_products(models.Model):
     productDescription = models.TextField(max_length = 150, verbose_name = 'Product Description')
     productPrice = models.FloatField(verbose_name = 'Product Price')
     productStock = models.IntegerField(verbose_name = 'Product Stock', default = 1)
-    productImage = models.ImageField(upload_to = 'media/', verbose_name = 'Product Image')
+    productImage = models.ImageField(upload_to = 'media/media/', verbose_name = 'Product Image')
     categoryId = models.ForeignKey('tb_categories', verbose_name = 'Category Id', on_delete = models.CASCADE)
     referenceId = models.ForeignKey('tb_referencies', verbose_name = 'Reference Id', on_delete = models.CASCADE, blank = True, null = True, default = '')
     sizeId = models.ManyToManyField('tb_sizes', verbose_name = 'Size Id')

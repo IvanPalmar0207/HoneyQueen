@@ -109,7 +109,7 @@
     color:rgb(37, 181, 234);
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
-    margin-top: 15px;
+    margin-top: 25px;
 }
 
 .containerSize{
@@ -123,6 +123,36 @@
 .containerSize input{
     height: 30px;
     margin-top: 0px;
+}
+
+.containerFormRegister .imageProduct{
+    margin-top: 30px;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+
+.containerFormRegister .inputImage{
+    display: none;
+}
+
+.containerFormRegister .buttonImage{
+    width: 100%;
+    padding: 15px;
+    padding-left: 22px;
+    padding-right: 22px;
+    background-color:rgb(37, 181, 234);
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.buttonImage:hover{
+    background-color: black;
+    transition: all ease-in-out 0.3s;
+    cursor: pointer;
 }
 
 .buttonRegister{
@@ -162,7 +192,7 @@
 }
 
 .buttonQuantity{
-    width: 13%;
+    width: 10%;
     height: 50px;
     text-align: center;
     font-size: 25px;
@@ -187,7 +217,16 @@
 
 @media (max-width: 1200px) {
     .containerNewUser{
-        padding: 10px;   
+        padding: 10px;
+        padding-bottom: 20px;   
+    }
+
+    .containerGoBack{
+        padding: 30px;
+    }
+
+    .buttonQuantity{
+        width: 10%;
     }
 
     .containerForm{
@@ -197,6 +236,20 @@
 
     .containerSize input{
         height: 20px;
+    }
+
+    .titleUsers{
+        padding: 30px;
+        margin-top: 0px;
+    }
+
+    .contextPage{
+        padding: 30px;
+        margin-top: 20px;
+    }
+
+    .containerForm{
+        margin-top: 0px;
     }
 
     .subMenuInfo ul li{
@@ -258,6 +311,10 @@
         text-align: center;
     }
 
+    .buttonQuantity{
+        width: 10%;
+    }
+    
     .containerButtonMain button{
         margin-top: 20px;
     }

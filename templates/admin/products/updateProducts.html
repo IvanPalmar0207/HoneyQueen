@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">    
+    <link rel="shortcut icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/products/newProduct.css' %}">
+    <title>Actualizar Producto</title>
+</head>
+<body>
+
+    {% include 'components/navbarMain.html' %}
+
+    <section class="containerNewUser">
+        <div class="containerGoBack">
+            <a href="{% url 'manageProducts' %}">
+                <i class="bi bi-arrow-left-circle"></i>
+            </a>
+        </div>
+
+        <div class="titleUsers">
+            <h2>Acutalización de Productos</h2>
+        </div>
+
+        <div class="contextPage">
+            <p>
+                Bienvenido usuario administrador, te encuentras en el apartado de actualización de productos, en esta parte del aplicativo te encontraras con la opción de 
+                actualizar campos como; el nombre del producto, la descripción del producto, el precio del producto, la imagen del producto, la categoría a la
+                que pertenece el producto, los materiales de referencia del producto y las diferentes tallas asociadas al producto, todos los datos 
+                estarán validados para que no se ingresen datos incorrectos.
+            </p>
+        </div>
+
+        <div class="containerForm">
+            <div class="containerFormRegister">
+            <h4>ACTUALIZAR PRODUCTO</h4>
+            <form action="/users/updateProducts/{{product.productId}}" method = "POST" name="form" enctype="multipart/form-data" onsubmit="return validateProducts()">
+                {% csrf_token %}      
+                <input type="text" name="productName" id="productName" value="{{product.productName}}" required>
+                <br>
+                
+                <textarea cols="50" rows="10" name="productDescription" id="productDescription" required>{{product.productDescription}}</textarea>
+                <br>
+                
+                <input type="text" name="productPrice" id="productPrice" value="{{product.productPrice}}" required>                
+                <br>
+                <br>
+
+                <div class="containerLabel">
+                    <label for="counterValue">Unidades disponibles:</label>
+                </div>
+                <br>
+                <br>
+                <div class="containerQuantity">                        
+                    <input type="hidden" name="counterValue" id = "quantity" value = "{{product.productStock}}">
+                    <button type="button" class="buttonQuantity" id = "decrementBtn" onclick="decrementQuantity()">-</button>
+                    <span class="numberQuantity" name = "counterValue" id = "quantity-display">{{product.productStock}}</span>
+                    <button type="button" class="buttonQuantity" id = "incrementBtn" onclick="incrementQuantity()">+</button>
+                </div>
+                <br>
+                
+                <div class="containerLabel">
+                    <label>Imagen del Producto:</label>
+                </div>
+                <img class="imageProduct" src="{% static '/img/profilePicture.png' %}" alt="avatar" id="img">
+                <input class="inputImage" value="{{product.productImage.url}}" type="file" name="productImage" id="productImage" placeholder = "Imagen del Producto*" accept="image/*" required>
+                <br>
+                <br>
+                <br>
+                <label class="buttonImage" for="productImage">Agregar Imagen</label>
+                <br>           
+                <br> 
+
+                <div class="containerLabel">
+                    <label for="categoryId">Categoría del Producto:</label>
+                </div>
+                <br>
+                <select name="categoryId" id="categoryId" required>
+                    <option value="{{product.categoryId.categoryId}}">{{product.categoryId.categorieName}}</option>
+                    {% for categorie in categories %}
+                        <option value="{{categorie.categoryId}}">{{categorie.categorieName}}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <br>
+
+                <div class="containerLabel">
+                    <label for="referenceId">Materiales de Referencia:</label>
+                </div>
+                <br>
+                <select name="referenceId" id="referenceId">
+                    <option value="{{product.referenceId.referenceId}}">{{product.referenceId.referenceDescription}}</option>
+                    {% for reference in referencies %}
+                        <option value="{{reference.referenceId}}">{{reference.referenceDescription}}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <br>
+
+                <div class="containerLabel">
+                    <label for="sizesId">Elige las tallas del producto:</label>
+                </div>
+                <div class="containerSize">                    
+                    {% for size in sizes%}
+                        <input type="checkbox" name="{{size.sizeName}}" value = "{{size.sizeId}}" id = "myCheckBox">
+                        <h4>{{size.sizeName}}</h4>
+                    {% endfor %}
+                </div>
+
+                <button class="buttonRegister buttonColor1" type="submit">Ingresar Producto</button>
+                <br>
+            </form>
+            </div>
+        </div>
+
+
+    </section>
+
+    {% include 'components/footer.html' %}
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.5/sweetalert2.all.min.js"></script>
+<script src="{% static 'js/validateProducts.js' %}"></script>
+
+<script>
+    function incrementQuantity(){
+        var quantityInput = document.getElementById('quantity')
+        var quantityDisplay = document.getElementById('quantity-display')
+        var quantity = parseInt(quantityInput.value)
+
+        quantity ++;
+
+        quantityInput.value = quantity
+        quantityDisplay.textContent = quantity
+    }
+
+    function decrementQuantity(){
+        var quantityInput = document.getElementById('quantity')
+        var quantityDisplay = document.getElementById('quantity-display')
+        var quantity = parseInt(quantityInput.value)
+
+        if(quantity > 1){
+            quantity --;
+            quantityInput.value = quantity
+            quantityDisplay.textContent = quantity
+        }
+
+        else if(quantity < 1){
+            quantity = 1
+        }
+
+    }
+</script>
+
+<script>
+    const defaultFile = '../img/profilePicture.png'
+    const file = document.getElementById('productImage');
+    const productImage = document.getElementById('img')
+    file.addEventListener('change', e => {
+        if( e.target.files ){
+            const reader = new FileReader()
+            reader.onload = function(e){
+                productImage.src = reader.result
+            }
+            reader.readAsDataURL(e.target.files[0])
+        }else{
+            Swal.fire({
+                icon : 'info',
+                title : 'Importante',
+                text : 'Debes elegir una imagen para hacer posible la actualización'
+            })
+        }
+    })
+</script>
+
+</html>

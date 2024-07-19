@@ -9,6 +9,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 #Messages
 from django.contrib import messages
+#Images
+from django.core.files.storage import FileSystemStorage
 
 #Crete a new User
 def registerUser(request):
@@ -167,7 +169,6 @@ def deleteUsers(request, documentNumber):
         messages.error(request, 'No tienes los permisos correspondientes')
         return redirect('home')
 
-
 #Manage Product
 @login_required
 def manageProducts(request):
@@ -206,15 +207,169 @@ def renderInsertProducts(request):
 
 @login_required
 def insertProducts(request):
-    pass
+    if request.user.is_superuser:
+        if request.method == 'POST' and request.FILES['productImage']:
+            productName = request.POST['productName']
+            productDescription = request.POST['productDescription']
+            productPrice = request.POST['productPrice']
+            counterValue = request.POST['counterValue']
+            productImage = request.FILES['productImage']
+
+            categoryId = tb_categories.objects.get(categoryId = request.POST['categoryId'])            
+            
+            sizeName = [size.sizeName for size in tb_sizes.objects.all()]
+            sizeId = []
+
+            for size in sizeName:
+                sizeId.append(int(request.POST.get(size))) if request.POST.get(size) else print('No se encontraron')
+            
+
+            if categoryId:
+
+                product = tb_products.objects.create(
+                    productName = productName, 
+                    productDescription = productDescription, 
+                    productPrice = productPrice, 
+                    productStock = counterValue,
+                    productImage = productImage,
+                    categoryId = categoryId,
+                )
+
+                for sizedId in sizeId:
+                    product.sizeId.add(tb_sizes.objects.get(sizeId = sizedId))
+
+                product.save()
+
+                messages.success(request,'El nuevo producto ha sido registrado correctamente, gracias.')
+                return redirect('manageProducts')
+            
+            elif categoryId:
+                
+                referenceId = tb_referencies.objects.get(referenceId = request.POST['referenceId'])
+                product = tb_products.objects.create(
+                    productName = productName, 
+                    productDescription = productDescription, 
+                    productPrice = productPrice, 
+                    productStock = counterValue,
+                    productImage = productImage,
+                    categoryId = categoryId,
+                    referenceId = referenceId
+                )
+
+                for sizedId in sizeId:
+                    product.sizeId.add(tb_sizes.objects.get(sizeId = sizedId))
+
+                product.save()
+
+                messages.success(request,'El nuevo producto ha sido registrado correctamente, gracias.')
+                return redirect('manageProducts')
+            
+            else:
+                messages.error(request,'El producto no se ha podido registrar, intenta nuevamente.')
+                return redirect('manageProducts')
+        else:
+            pass
+    else:
+        messages.error(request,'No tienes los permisos correspondientes')
+        return redirect('home')        
 
 @login_required
 def renderUpdateProducts(request, productId):
-    pass
+    if request.user.is_superuser:
+        product = tb_products.objects.get(productId = productId)
+
+        categories = tb_categories.objects.all()
+        referencies = tb_referencies.objects.all()
+        sizes = tb_sizes.objects.all()
+
+        context = {
+            'product' : product,
+            'categories' : categories,
+            'referencies' : referencies,
+            'sizes' : sizes
+        }
+
+        return render(request,'admin/products/updateProducts.html', context)
+
+    else:
+        messages.error(request,'No tienes los permisos correspondientes')
+        return redirect('home')        
 
 @login_required
 def updateProducts(request, productId):
-    pass
+    if request.user.is_superuser:
+        
+        product = tb_products.objects.get(productId = productId)
+
+        if request.method == 'POST' and request.FILES['productImage']:
+
+            productName = request.POST['productName']
+            productDescription = request.POST['productDescription']
+            productPrice = request.POST['productPrice']
+            productValue = request.POST['counterValue']
+            productImage = request.FILES['productImage']
+            referenceId = request.POST['referenceId']
+
+            categoryId = tb_categories.objects.get(categoryId = request.POST['categoryId'])
+
+            sizeName = [size.sizeName for size in tb_sizes.objects.all()]
+            sizeId = []
+
+            for size in sizeName: 
+                sizeId.append(int(request.POST.get(size))) if request.POST.get(size) else print('No se encontrarón')
+
+            if referenceId == '':
+
+                product.productName = productName
+                product.productDescription = productDescription
+                product.productPrice = productPrice
+                product.productStock = productValue
+                product.productImage = productImage
+                product.categoryId = categoryId
+
+                sizeUpdate = []
+                for sizedId in sizeId:
+                    sizeUpdate.append(tb_sizes.objects.get(sizeId = sizedId))
+
+                product.sizeId.set(sizeUpdate)
+
+                product.save()
+
+                messages.success(request,'El producto ha sido actualizado correctamente, gracias y buen día.')
+                return redirect('manageProducts')
+                
+            elif product:
+
+                referenceId = tb_referencies.objects.get(referenceId = request.POST['referenceId'])
+
+                product.productName = productName
+                product.productDescription = productDescription
+                product.productPrice = productPrice
+                product.productStock = productValue
+                product.productImage = productImage
+                product.categoryId = categoryId
+                product.referenceId = referenceId
+
+                sizeUpdate = []
+
+                for sizedId in sizeId:
+                    sizeUpdate.append(tb_sizes.objects.get(sizeId = sizedId))
+                
+                product.sizeId.set(sizeUpdate)
+
+                product.save()
+
+                messages.success(request,'El producto ha sido actualizado correctamente, gracias y buen día.')
+                return redirect('manageProducts')
+        
+            else:
+                messages.error(request,'El producto no se ha podido actualizar correctamente, intenta nuevamente.')
+                return redirect('manageProducts')
+            
+    else:        
+        messages.error(request,'No tienes los permisos correspondientes')
+        return redirect('home')
+
 
 @login_required
 def deleteProducts(request, productId):
@@ -230,7 +385,7 @@ def deleteProducts(request, productId):
             
         else:
             messages.error(request,'No se ha podido eliminar al producto correctamente, intenta nuevamente.')
-            return redirect('manageUsers')
+            return redirect('manageProducts')
 
     else:
         messages.error(request,'No tienes los permisos correspondientes')
