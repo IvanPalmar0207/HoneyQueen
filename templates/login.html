@@ -19,12 +19,18 @@
             <div class="subMenuInfo">
                 {% if request.user.is_superuser %}
                 {% else %}
-                    <div class="containerIconsMain">
+                <div class="containerIconsMain">
+                    <a href="https://www.facebook.com/profile.php?id=61557590686025" target="_blank" rel="noopener noreferrer">
                         <i class="bi bi-facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com/honeysqueen2024" target="_blank" rel="noopener noreferrer">
                         <i class="bi bi-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@honeys.queen4?_d=secCgYIASAHKAESPgo8hA1SErTwTmgxy%2F4YBtljrHUaIolFEeLe7zAuE3jSz63pjsEWv%2B5O1z86sL3aBzn0gIM4TyuvEOYYNwvrGgA%3D&_r=1&object_id=7398593081111659525&page_open_method=scan_code&schema_type=4&sec_uid=MS4wLjABAAAA1z9ojqA5vnKQMOkWzx_nJaFuv8HQ0iEUcHMjbiclKUoxeESq34Wn9kKZJrHpQ4yb&share_app_id=1233&share_author_id=7398593081111659525&share_uid=7398593081111659525&tt_from=scan_code&utm_campaign=client_scan_code&utm_medium=2&utm_source=scan_code" target="_blank" rel="noopener noreferrer">
                         <i class="bi bi-tiktok"></i>
-                    </div>
-                {% endif %}
+                    </a>
+                </div>
+            {% endif %}
                 <ul>
                     {% if request.user.is_superuser%}
                             <li>
@@ -40,12 +46,6 @@
                                 </li>                 
                             {% endfor %}                            
                         {% endif %}
-                            <li>
-                                <a href="">NOTICIAS</a>
-                            </li>
-                            <li>
-                                <a href="">BLOG</a>
-                            </li>
                     </ul>
                     {% if request.user.is_superuser %}
                     {% else %}

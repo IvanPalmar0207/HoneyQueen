@@ -14,12 +14,12 @@
 
 .subMenuInfo{
     display: flex;
-    align-items: center;
+    margin-top: 10px;
 }
 
 .subMenuInfo ul{
     margin-left: 20px;
-    margin-right: 20px
+    margin-right: 20px;
 }
 
 .subMenuInfo ul li{
@@ -36,7 +36,7 @@ li a{
 }
 
 .subMenuInfo .bi{
-    font-size: 25px;
+    font-size: 22px;
     padding: 10px;
     margin: 5px;
     border-radius: 100%;
@@ -52,6 +52,10 @@ li a{
     background-color: black;
     cursor: pointer;
     transition: all ease-in-out 0.3s;
+}
+
+.containerIconsMain a{
+    color: transparent;
 }
 
 .containerButtonMain{
@@ -209,7 +213,11 @@ li a{
     }
 
     .subMenuInfo .bi{
-        font-size: 15px;
+        font-size: 15px;    
+    }
+
+    .subMenuInfo .bi a{
+        margin-top: 5px;
     }
 
     .containerButtonMain button{

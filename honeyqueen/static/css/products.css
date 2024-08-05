@@ -144,11 +144,6 @@
     color: transparent;
 }
 
-footer{
-    background-image: url('../img/Background.jpg');
-    height: 50px;
-}
-
 @media (max-width:1200px) {
     .containerAllProducts{
         padding: 0px;
@@ -158,9 +153,5 @@ footer{
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         grid-gap: 5%;
-    }
-
-    footer{
-        display: none;
     }
 }

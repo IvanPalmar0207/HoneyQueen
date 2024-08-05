@@ -1,6 +1,18 @@
 footer{
     background-image: url('../img/Background.jpg');
-    height: 50px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.containerFooter{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 50px;
+}
+
+.containerFooter img{
+    width: 20%;
 }
 
 @media (max-width:900px) {
