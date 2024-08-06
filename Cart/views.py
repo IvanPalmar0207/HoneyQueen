@@ -38,11 +38,21 @@ def allProducts(request):
         total = 0
         for i in cartItems:
             total += i.price
-
+        
+        messages = f'''Los productos escogidos son:               '''
+        
+        products = []
+        sizes = []
+        for i in cartItems:            
+            messages += f'{i.cartProduct.productName}, talla/s: {i.cartSize.sizeName}, {str(i.cartQuantity)} unidades, '            
+            
+        messages += f'                   El valor total de la compra es igual a {str(total)} COP'            
+        
         context = {
             'items' : cartItems,
             'totalPrice' : total,
-            'cart' : cart
+            'cart' : cart,
+            'message' : messages,
         }
 
     return render(request, 'cart/allProducts.html', context)

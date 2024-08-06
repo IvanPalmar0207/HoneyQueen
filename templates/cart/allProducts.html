@@ -92,22 +92,22 @@
                     <h3>$ {{totalPrice}} COP</h3>
                 </div>
 
-                <div class="containerFormCart">
+                <div class="containerFormCart">                                        
                     <form action="/cart/confirmBuyed/{{cart.cartId}}" method="post">{% csrf_token %}
-                        <input type="hidden" name="totalPrice" value="{{totalPrice}}">
-                        <button type="submit">Finalizar la Compra</button>
+                        <input type="hidden" name="totalPrice" value="{{totalPrice}}">                        
+                        <button type="submit">Finalizar la Compra</button>                        
+                        <a class="button" href="https://wa.me/573157201170?text={{message}}" target="_blank" rel="noopener noreferrer">
+                            Generar Reporte de WhatsApp (Obligatorio)
+                        </a>                        
                     </form>
-                </div>
+                </div>                
 
                 <div class="continueBuying">
                     <i class="bi bi-arrow-left-circle"></i>
                     <a href="{% url 'home' %}">
                         Seguir comprando
                     </a>
-                </div>
-
-                <a href="https://wa.me/3157201170?text=Mi vida">Hola</a>
-
+                </div>                
             </div>
 
         </div>
@@ -117,6 +117,7 @@
     {% include 'components/footer.html' %}
 
 </body>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.5/sweetalert2.all.min.js"></script>
 
